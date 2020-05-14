@@ -1,0 +1,31 @@
+{
+  "name": "crowie/realtime",
+  "type": "library",
+  "description": "Library that enables real-time and event-based communication between the browser and the server. The library uses WebSocket as a transport when possible, otherwise it switches to long-polling.",
+  "authors": [
+    {
+      "name": "Patrik Kelemen",
+      "email": "patrik1470@gmail.com"
+    }
+  ],
+  "keywords": [
+    "websocket",
+    "long-polling",
+    "realtime",
+    "real-time",
+    "communication",
+    "scalable",
+    "service",
+    "socket.io"
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "ext-json": "*",
+    "firebase/php-jwt": "^5.2"
+  },
+  "autoload": {
+    "psr-0": {
+      "Crowie": "src/"
+    }
+  }
+}
