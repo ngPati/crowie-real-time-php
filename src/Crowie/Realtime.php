@@ -1,7 +1,7 @@
 <?php
 
 namespace Crowie;
-require "vendor/autoload.php";
+//require "vendor/autoload.php";
 
 use \Firebase\JWT\JWT;
 
@@ -10,10 +10,15 @@ class Realtime
     static $privateApiKey;
     static $serverUrl;
 
+    // prevent creating multiple instances due to "private" constructor
+    private function __construct()
+    {
+    }
+
     public static function init($privateApiKey)
     {
         self::$privateApiKey = $privateApiKey;
-        $result = self::get('http://localhost:8080/register-server');
+        $result = self::get('http://ngcrow.io:8080/register-server');
         if ($result !== FALSE) {
             self::$serverUrl = base64_decode($result);
             return true;
@@ -69,7 +74,7 @@ class Realtime
 
     public static function online($room = null)
     {
-        $result = $room ? self::get('http://localhost:8080/online' . '/' . $room) : self::get('http://localhost:8080/online');
+        $result = $room ? self::post('http://ngcrow.io:8080/online' . '/' . $room, array()) : self::post('http://ngcrow.io:8080/online', array());
         if ($result !== FALSE) {
             return $result;
         } else {
@@ -77,6 +82,18 @@ class Realtime
             return false;
         }
     }
+
+    public static function onlineByUserIds($userIdsList)
+    {
+        $result = self::post('http://ngcrow.io:8080/online', array('idList' => $userIdsList));
+        if ($result !== FALSE) {
+            return $result;
+        } else {
+            echo 'Error while getting online count.';
+            return false;
+        }
+    }
+
 
     public static function generateJwt($userId, $additionalData = null, $expirationInSeconds = 86400)
     {

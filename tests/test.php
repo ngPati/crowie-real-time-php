@@ -1,15 +1,15 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php'; // Autoload files using Composer autoload
 use Crowie\Realtime;
-
-Realtime::init('crw_test_4bcc8ec0-dd72-499f-b6f6-464ba89ddb94');
+echo 'sadas';
+Realtime::init('crw_live_c381cb57-c819-48ff-9b11-236406fa173a');
 
 
 //echo '
 //';
 //echo Realtime::generateJwt(1);
 //
-echo Realtime::send(1, 'message', 'sss');
+echo Realtime::send(1, 'message', 'ahojky');
 //echo Realtime::joinRoom('1', 'dsadasdas');
 
 //echo Realtime::sendToRoom('dsadasdas', 'message', 'kjfhaksufhaksfh');
